@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>PHP IMS</title>
+    <title>WKU Specialised Hospital Stock Management System</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -19,7 +19,7 @@
 <div id="header">
 
     <h2 style="color: white;position: absolute">
-        <a href="dashboard.html" style="color:white; margin-left: 30px; margin-top: 40px">PHP IMS</a>
+        <a href="dashboard.html" style="color:white; margin-left: 30px; margin-top: 40px">STOCK</a>
     </h2>
 </div>
 
@@ -47,16 +47,30 @@
 <!--sidebar-menu-->
 <div id="sidebar">
     <ul>
-        <li class="active">
-            <a href="index.html"><i class="icon icon-home"></i><span>Dashboard</span></a>
+        <li >
+            <a href="dashboard.php"><i class="icon icon-home"></i><span>Dashboard</span></a>
+        </li>
+        <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Manage Stock</span> <span
+                        class="label label-important">3</span></a>
+            <ul>
+                <li ><a href="add_stock.php"><i class="icon icon-plus"></i>  Add Stock</a></li>
+                <li><a href="search_stock.php"><i class="icon icon-search"></i> Search Stock</a></li>
+                <li><a href="update_stock.php"><i class="icon icon-upload"></i> Update Stock</a></li>
+            </ul>
+        </li>
+        <li >
+            <a href="request_stock.php"><i class="icon icon-credit-card"></i><span>Request Stock</span></a>
+        </li>
+        <li >
+            <a href="approve_request.php"><i class="icon icon-medkit"></i><span>Approve Request</span></a>
         </li>
 
-        <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Forms</span> <span
-                    class="label label-important">3</span></a>
+        <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Report</span> <span
+                        class="label label-important">3</span></a>
             <ul>
-                <li><a href="form-common.html">Basic Form</a></li>
-                <li><a href="form-validation.html">Form with Validation</a></li>
-                <li><a href="form-wizard.html">Form with Wizard</a></li>
+                <li><a href="stock_report.php" ><i class="icon icon-umbrella"></i>Stock Report </a></li>
+                <li><a href="inventory_report.php" ><i class="icon icon-inbox"></i>Inventory Report</a></li>
+                <li><a href="expired_date.php"><i class="icon icon-move"></i>Expired Report</a></li>
             </ul>
         </li>
 

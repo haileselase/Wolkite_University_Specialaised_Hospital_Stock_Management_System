@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>PHP IMS</title>
+    <title> WKU Stock Management System </title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -19,7 +19,7 @@
 <div id="header">
 
     <h2 style="color: white;position: absolute">
-        <a href="dashboard.html" style="color:white; margin-left: 30px; margin-top: 40px">PHP IMS</a>
+        <a href="dashboard.html" style="color:white; margin-left: 30px; margin-top: 40px">STOCK</a>
     </h2>
 </div>
 
@@ -30,7 +30,7 @@
     <ul class="nav">
         <li class="dropdown" id="profile-messages">
             <a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i
-                    class="icon icon-user"></i> <span class="text">Welcome User</span><b class="caret"></b></a>
+                    class="icon icon-user"></i> <span class="text">Welcome Admin</span><b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li><a href="#"><i class="icon-user"></i> My Profile</a></li>
                 <li class="divider"></li>
@@ -53,15 +53,21 @@
         <li >
             <a href="add_new_user.php"><i class="icon icon-user"></i><span>Add New User</span></a>
         </li>
-
+        <li >
+            <a href="edit_user.php"><i class="icon icon-user"></i><span>Update User</span></a>
+        </li>
+        <li >
+            <a href="delete_user.php"><i class="icon icon-user"></i><span>Delete User</span></a>
+        </li>
         <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Forms</span> <span
-                    class="label label-important">3</span></a>
+                        class="label label-important">3</span></a>
             <ul>
                 <li><a href="form-common.html">Basic Form</a></li>
                 <li><a href="form-validation.html">Form with Validation</a></li>
                 <li><a href="form-wizard.html">Form with Wizard</a></li>
             </ul>
         </li>
+
 
     </ul>
 </div>

@@ -2,7 +2,7 @@
 <!--Footer-part-->
 
 <div class="row-fluid">
-    <div id="footer" class="span12" style="color:white"> Designed And Developed By: Your Name</div>
+    <div id="footer" class="span12" style="color:white"> Designed And Developed By: WKU2010 Group Tow </div>
 </div>
 
 <!--end-Footer-part-->

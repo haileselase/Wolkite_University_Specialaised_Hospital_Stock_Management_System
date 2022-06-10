@@ -64,7 +64,7 @@ include "../user/connection.php"
                             </div>
 
                             <div class="form-actions">
-                                <button type="submit" name="submit1" class="btn btn-success"   >Save</button>
+                                <button type="submit" name="submit1" class="btn btn-success" >Add</button>
                             </div>
                             <div class="alert alert-success" id="success" style="display:none" >
                                 <center>
@@ -74,20 +74,25 @@ include "../user/connection.php"
 
                         </form>
                     </div>
+
                 </div>
+
 </div>
 <?php
 if(isset($_POST["submit1"]))
 {
 
     $count = 0;
-    $res =mysqli_query($link,"select * from user_registration where username= $_POST[username]");
+    $res =mysqli_query($link,"select * from user_registration where username= '$_POST[username]'");
     $count =mysqli_num_rows($res);
     if($count>0){
         ?>
         <script type="text/javascript">
         document.getElementById("success").style.display="none";
         document.getElementById("error").style.display="block";
+        setTimeout(function () {
+            window.location.href=window.location.href;
+        },3000);
         </script>
         <?php
     }else
@@ -97,10 +102,15 @@ if(isset($_POST["submit1"]))
         <script type="text/javascript">
         document.getElementById("error").style.display="none";
         document.getElementById("success").style.display="block";
-
+        setTimeout(function () {
+            window.location.href=window.location.href;
+        },3000);
         </script>
         <?php
     }
 
 }
 ?>
+            <?php
+            include "footer.php";
+            ?>

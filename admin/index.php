@@ -65,7 +65,7 @@ if(isset($_POST["submit1"]))
     if($count>0){
         ?>
         <script type="text/javascript">
-            window.location="Demo.php";
+            window.location="add_new_user.php";
         </script>
         <?php
     }else
@@ -80,4 +80,7 @@ if(isset($_POST["submit1"]))
     }
 
 }
+?>
+<?php
+include "footer.php";
 ?>
