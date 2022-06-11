@@ -36,7 +36,7 @@
                 <li class="divider"></li>
                 <li><a href="#"><i class="icon-check"></i> My Tasks</a></li>
                 <li class="divider"></li>
-                <li><a href="login.html"><i class="icon-key"></i> Log Out</a></li>
+                <li><a href="logout.php"><i class="icon-key"></i> Log Out</a></li>
             </ul>
         </li>
 
@@ -79,6 +79,8 @@
 <!--sidebar-menu-->
 <div id="search">
 
-    <a href="index.html" style="color:white"><i class="icon icon-share-alt"></i><span>LogOut</span></a>
+
+    <a href="view_notification.php" /><input type="image" name="notification" src="../image/notification.png" style="border: double;" height="30" width="50"/ >
+    <a href="logout.php" style="color:white"><i class="icon icon-share-alt"></i><span>LogOut</span></a>
 
 </div>

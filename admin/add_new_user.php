@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(isset($_SESSION['username']) && ($_SESSION['role'])&& $_SESSION['role']==="Administrator")
+{
+    ?>
+<?php
 include "header.php";
 include "../user/connection.php"
 ?>
@@ -51,9 +56,23 @@ include "../user/connection.php"
                                 <label class="control-label">Select Role</label>
                                 <div class="controls">
                                    <select name="role" class="span11">
-                                       <option>user</option>
-                                       <option>admin</option>
+                                       <option>Administrator</option>
+                                       <option>Pharmacy_head</option>
+                                       <option>Store_Keeper</option>
+                                       <option>Auditor</option>
+                                       <option>Dispensing_Unit</option>
+                                       <option>Physician</option>
+                                       <option>CEO</option>
                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Select Status</label>
+                                <div class="controls">
+                                    <select name="status" class="span11">
+                                        <option>Active</option>
+                                        <option>InActive</option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -97,20 +116,27 @@ if(isset($_POST["submit1"]))
         <?php
     }else
     {
-        $res =mysqli_query($link,"insert into user_registration values (NULL,'$_POST[firstname]','$_POST[lastname]','$_POST[username]','$_POST[password]','$_POST[role]','$_POST[status]')");
+        $password = mysqli_real_escape_string($link,$_POST['password']);
+        $password =password_hash($password, PASSWORD_BCRYPT);
+
+        $res =mysqli_query($link,"insert into user_registration values (NULL,'$_POST[firstname]','$_POST[lastname]','$_POST[username]','$password','$_POST[role]','$_POST[status]')");
         ?>
         <script type="text/javascript">
         document.getElementById("error").style.display="none";
         document.getElementById("success").style.display="block";
         setTimeout(function () {
             window.location.href=window.location.href;
-        },3000);
+        },10000);
         </script>
         <?php
     }
 
 }
 ?>
-            <?php
-            include "footer.php";
-            ?>
+
+            <?php include "footer.php"; ?>
+<?php  } else
+{
+    header("Location:index.php");
+}
+    ?>

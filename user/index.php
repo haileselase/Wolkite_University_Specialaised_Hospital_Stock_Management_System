@@ -1,5 +1,5 @@
-
 <?php
+session_start();
 include "connection.php";
 ?>
 <!DOCTYPE html>
@@ -36,12 +36,11 @@ include "connection.php";
                 </div>
             </div>
         </div>
+
         <div class="form-actions">
             <center>
                 <input type="submit" name="submit1" value="Login" class="btn btn-success"/>
             </center>
-
-
 
         </div>
     </form>
@@ -57,33 +56,78 @@ include "connection.php";
 <?php
 if(isset($_POST["submit1"]))
 {
-    $username =mysqli_real_escape_string($link,$_POST["username"]);
-    $password =mysqli_real_escape_string($link,$_POST["password"]);
+    $username =$_POST["username"];
+    $password =$_POST["password"];
 
-    $count = 0;
-    $res =mysqli_query($link,"select * from user_registration where username='$username' && password='$password' && role ='user' && status ='active'");
-    $count =mysqli_num_rows($res);
-    if($count>0){
-        ?>
-        <script type="text/javascript">
-            window.location="add_stock.php";
-        </script>
-        <?php
-    }else
-    {
+    $res =mysqli_query($link,"select * from user_registration where username='$username' && password='$password' && status ='Active'");
+
+
+    if(mysqli_num_rows($res) === 1){
+        $row = mysqli_fetch_assoc($res);
+        if($row['username'] === $username && $row['password'] === $password ){
+            $_SESSION['username']=$row["username"];
+            $_SESSION['role']=$row["role"];
+
+            switch ($_SESSION['role']){
+                case "Administrator":
+                    header("Location:../admin/add_new_user.php");
+                    break;
+                case "Pharmacy_head":
+                    header("Location:dashboard.php");
+                    break;
+                case "Dispensing_Unit":
+                    header("Location:request_stock.php");
+                    break;
+                case "Auditor":
+                    header("Location:inventory_report.php");
+                    break;
+                case "Store_Keeper":
+                    header("Location:search_stock.php");
+                    break;
+            }
+
+        }else{
+            ?>
+            <div class="alert alert-danger">
+
+                <center>
+                    Incorrect User Name Or Password");
+                </center>
+            </div>
+            <?php
+            ?>
+            <script type="text/javascript">
+                setTimeout(function () {
+                    window.location.href=window.location.href;
+                },1000);
+            </script>
+            <?php
+
+        }
+    }else{
         ?>
         <div class="alert alert-danger">
-            <center>
-                Invalid UserName Or Password Or Account Block By Admin  .
-            </center>
 
+            <center>
+                Incorrect User Name Or Password");
+            </center>
         </div>
+        <?php
+        ?>
+        <script type="text/javascript">
+            setTimeout(function () {
+                window.location.href=window.location.href;
+            },1000);
+        </script>
         <?php
     }
 
 }
 ?>
 
+<?php
+include "footer.php";
+?>
 
 
 

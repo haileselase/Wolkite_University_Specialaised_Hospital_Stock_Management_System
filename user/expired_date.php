@@ -1,16 +1,7 @@
+
 <?php
 include "header.php";
 include "connection.php";
-$id =$_POST['id'];
-
-$expire_date = "";
-$res=mysqli_query($link,"select * from stock_registration where productid = $id ");
-while ($row=mysqli_fetch_array($res))
-{
-    $expire_date=$row["expire_date"];
-    $today = date('Y-m-d');
-    $diff = date_diff(date_create($today),date_create($expire_date));
-}
 ?>
 
 <!--main-container-part-->
@@ -29,34 +20,13 @@ while ($row=mysqli_fetch_array($res))
 
             <div class="span12">
                 <div class="col-sm-4 col-sm-offset-4">
-                    <form method="POST">
-                        <center>
-                            <div class="form-group" >
-                                <label>Expire Date:</label>
-                                <input type="date" name="expire" class="form-control" >
-                                <button type="submit" name="calculate" class="btn btn-primary">Calculate</button>
-                            </div>
-                        </center>
-                    </form >
 
-                    <?php
-                    if(isset($_POST['id'])){
-                        $exp = $_POST['expire'];
-                        $today = date('Y-m-d');
-                        $diff = date_diff(date_create($today),date_create($expire_date));
-                        ?>
-                        <div align="center" style="margin-top:10px;" >
-                            <?php echo 'Product will be Expired Date <b>'.$diff->format('%y').'</b>'; ?>
-                        </div>
-                        <?php
-                    }
-
-                    ?>
                 </div>
                 <div class="widget-content nopadding">
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
+                            <th> Product Id </th>
                             <th> Category Id</th>
                             <th> Suplier ID</th>
                             <th> productname</th>
@@ -66,15 +36,17 @@ while ($row=mysqli_fetch_array($res))
                             <th> Manufacturing_date</th>
                             <th> Expire_date</th>
                             <th> Quantity</th>
-                            <th> calculate</th>
+                            <th> Remain Days</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
+                        $today = date('Y-m-d');
                         $res=mysqli_query($link,"select * from stock_registration");
                         while ($row=mysqli_fetch_array($res)){
                             ?>
                             <tr >
+                                <td><?php echo $row["productid"]?></td>
                                 <td><?php echo $row["catagoryid"]?></td>
                                 <td><?php echo $row["supplierid"]?></td>
                                 <td ><?php echo $row["productname"]?></td>
@@ -84,8 +56,24 @@ while ($row=mysqli_fetch_array($res))
                                 <td><?php echo $row["manufacturing_date"]?></td>
                                 <td ><?php echo $row["expire_date"]?></td>
                                 <td><?php echo $row["quantity"]?></td>
-                                <td><a href="expired_date.php?id=<?php echo $row["id"];?>" name="id1"> Calculate </a> </td>
+                                <td><?php $today = time();
+                                    $exp_date = $row["expire_date"];
+                                    $today =strtotime($today);
+                                    $exp =strtotime($row["expire_date"]);
+                                    if($today>$exp){
+                                        $diff=$today-$exp;
+                                        $x = abs(floor($diff/(60*60*24)));
+                                        echo 'product Expired';
+                                        echo  "</br> Days :".$x;
+                                    }else {
+                                        $diff=$today-$exp;
+                                        $x = abs(floor($diff/(60*60*24)));
+                                        echo 'product Expired';
+                                        echo  "</br> Days :".$x;
+                                    }
+                                    ?></td><
                             </tr>
+
                             <?php
                         }
                         ?>

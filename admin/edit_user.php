@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(isset($_SESSION['username']) && ($_SESSION['role'])&& $_SESSION['role']==="Administrator")
+{
+    ?>
+<?php
 include "header.php";
 include "../user/connection.php";
 $id = $_GET['id'];
@@ -114,4 +119,8 @@ mysqli_query($link,"update user_registration set firstname='$_POST[firstname]',l
 <?php
 include "footer.php";
 ?>
-
+<?php  } else
+{
+    header("Location:index.php");
+}
+?>

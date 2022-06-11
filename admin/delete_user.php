@@ -1,4 +1,10 @@
 <?php
+session_start();
+if(isset($_SESSION['username']) && ($_SESSION['role'])&& $_SESSION['role']==="Administrator")
+{
+
+?>
+<?php
 include "header.php";
 include "../user/connection.php";
 $id=$_GET["id"];
@@ -96,4 +102,8 @@ window.location("add_new_user.php");
             <?php
             include "footer.php";
             ?>
-
+            <?php  } else
+            {
+                header("Location:index.php");
+            }
+            ?>

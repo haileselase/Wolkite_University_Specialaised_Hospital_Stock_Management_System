@@ -1,4 +1,9 @@
+<?php
+session_start();
+if(isset($_SESSION['username']) && ($_SESSION['role'])&& $_SESSION['role']==="Pharmacy_head")
+{
 
+?>
 <?php
 include "header.php";
 include "connection.php";
@@ -79,7 +84,7 @@ include "connection.php";
                             <div class="control-group">
                                 <label class="control-label"> Expired Date </label>
                                 <div class="controls">
-                                    <input type="date"  class="span11" placeholder=" Expired Date " name="expire_date"  />
+                                    <input type="date('YYYY/mm/dd')"  class="span11" placeholder=" Expired Date " name="expire_date"  />
                                 </div>
                             </div>
                             <div class="control-group">
@@ -146,4 +151,8 @@ include "connection.php";
             include "footer.php";
             ?>
 
-
+            <?php  } else
+            {
+                header("Location:index.php");
+            }
+            ?>

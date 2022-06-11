@@ -28,6 +28,7 @@ $id =$_POST['search'];
             <table class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                    <th> Product Id </th>
                     <th> Category Id </th>
                     <th> Supplier Id </th>
                     <th> Product Name</th>
@@ -45,6 +46,7 @@ $id =$_POST['search'];
                 while ($row=mysqli_fetch_array($res)){
                     ?>
                     <tr >
+                        <td><?php echo $row["productid"]?></td>
                         <td><?php echo $row["catagoryid"]?></td>
                         <td><?php echo $row["supplierid"]?></td>
                         <td><?php echo $row["productname"]?></td>
@@ -68,3 +70,5 @@ $id =$_POST['search'];
 include "footer.php";
 ?>
 <!--end-main-container-part-->
+
+

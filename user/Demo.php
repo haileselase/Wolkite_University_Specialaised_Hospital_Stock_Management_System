@@ -1,23 +1,12 @@
-
-<!--main-container-part-->
-<div id="content">
-    <!--breadcrumbs-->
-    <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
-                Home</a></div>
-    </div>
-    <!--End-breadcrumbs-->
-
-    <!--Action boxes-->
-    <div class="container-fluid">
-
-        <div class="row-fluid" style="background-color: white; min-height: 1000px; padding:10px;">
-            sdsd
-        </div>
-
-    </div>
-</div>
 <?php
-include "footer.php";
+$options = array("cost"=>4);
+$password ="take";
+$hash = password_hash($password , PASSWORD_BCRYPT,$options);
+echo "this is outside the if close";
+echo $hash;
+
+if(password_verify($password, $hash)){
+    echo "this is inside the if close";
+    echo $hash;
+}
 ?>
-<!--end-main-container-part-->

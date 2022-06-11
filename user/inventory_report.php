@@ -1,4 +1,8 @@
-
+<?php
+session_start();
+if(isset($_SESSION['username']) && ($_SESSION['role']) && $_SESSION['role']==="Auditor")
+{
+?>
 <?php
 include "header.php";
 include "connection.php";
@@ -124,6 +128,11 @@ include "connection.php";
             ?>
             <?php
             include "footer.php";
+            ?>
+            <?php  } else
+            {
+                header("Location:index.php");
+            }
             ?>
 
 

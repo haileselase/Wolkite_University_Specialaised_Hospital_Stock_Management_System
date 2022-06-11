@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(isset($_SESSION['username']) && ($_SESSION['role']))
+{
+?>
+<?php
 include "header.php";
 include "connection.php";
 $id =$_GET["id"];
@@ -46,15 +51,16 @@ while ($row=mysqli_fetch_array($res))
                     <table class="table table-bordered table-striped">
                         <thead>
                         <tr>
-                            <th>Requester Name </th>
+                            <th> Requester Id </th>
                             <th> Product Name </th>
                             <th> Company Name</th>
-                            <th>Amount</th>
-                            <th>Date</th>
-                            <th>Priority</th>
-                            <th>Description</th>
-                            <th>Approve</th>
-                            <th>Delete Request</th>
+                            <th> Amount</th>
+                            <th> Date</th>
+                            <th> Priority</th>
+                            <th> Description</th>
+                            <th> Approve</th>
+                            <th> Delete Request</th>
+                            <th> FeedBack </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -72,7 +78,7 @@ while ($row=mysqli_fetch_array($res))
                                 <td><?php echo $row["description"]?></td>
                                 <td><a href="approve_request.php?id=<?php echo $row["id"];?>"> Approve </a> </td>
                                 <td><a href="delete_request.php?id=<?php echo $row["id"];?>"> Delete Request </a> </td>
-                            </tr>
+                                <td><input type="text" name="feedback"></td>
                             <?php
                         }
                         ?>
@@ -81,7 +87,7 @@ while ($row=mysqli_fetch_array($res))
                 </div>
             </div>
             <?php
-            if(isset($_GET["id"]))
+            if(isset($_POST["id"]))
             {
                 $count = 0;
                 $res =mysqli_query($link,"select * from  approved_list ");
@@ -115,4 +121,8 @@ while ($row=mysqli_fetch_array($res))
             <?php
             include "footer.php";
             ?>
-
+<?php  } else
+{
+    header("Location:index.php");
+}
+?>

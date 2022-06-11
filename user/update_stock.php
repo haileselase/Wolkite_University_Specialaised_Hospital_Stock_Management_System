@@ -2,7 +2,6 @@
 include "header.php";
 include "connection.php";
 $id =$_POST['search'];
-
 $catagoryid  = "";
 $supplierid  = "";
 $productname = "";
