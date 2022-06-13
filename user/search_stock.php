@@ -2,9 +2,7 @@
 include "header.php";
 include "connection.php";
 $id =$_POST['search'];
-
 ?>
-
 <!--main-container-part-->
 <div id="content">
     <!--breadcrumbs-->
@@ -14,11 +12,14 @@ $id =$_POST['search'];
 
     </div>
     <!--End-breadcrumbs-->
-  <form name="form1" action="" method="post" class="form-horizontal" >
-      <center> <input type="search" name="search" id="id" placeholder=" search " >  </center>
+    <div>
+        <form name="form1" action="" method="post" class="form-inline" >
+            <center> <input type="search" name="search" id="id" placeholder=" search " ><span> <button type="submit" name="submit1" class="btn btn-success"  value ="update">Search</button> </span>  </center>
 
 
-  </form>
+        </form>
+    </div>
+
     <!--Action boxes-->
     <div class="container-fluid">
 
@@ -34,7 +35,6 @@ $id =$_POST['search'];
                     <th> Product Name</th>
                     <th> Measurmrnt </th>
                     <th> Description</th>
-                    <th> Prescription</th>
                     <th> Manufacturing Date</th>
                     <th> Expire Date</th>
                     <th> Quantity</th>
@@ -42,17 +42,16 @@ $id =$_POST['search'];
                 </thead>
                 <tbody>
                 <?php
-                $res=mysqli_query($link,"select * from stock_registration  where productid =$id ");
-                while ($row=mysqli_fetch_array($res)){
+                $res=mysqli_query($link,"select * from stock_registration  where id =$id ");
+                while ($row=mysqli_fetch_array($res,)){
                     ?>
                     <tr >
-                        <td><?php echo $row["productid"]?></td>
+                        <td><?php echo $row["id"]?></td>
                         <td><?php echo $row["catagoryid"]?></td>
                         <td><?php echo $row["supplierid"]?></td>
                         <td><?php echo $row["productname"]?></td>
                         <td ><?php echo $row["measurmrnt"]?></td>
                         <td><?php echo $row["description"]?></td>
-                        <td ><?php echo $row["prescription"]?></td>
                         <td><?php echo $row["manufacturing_date"]?></td>
                         <td ><?php echo $row["expire_date"]?></td>
                         <td><?php echo $row["quantity"]?></td>

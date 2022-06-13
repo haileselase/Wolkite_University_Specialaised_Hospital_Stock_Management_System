@@ -7,7 +7,7 @@ include "connection.php";
     <!--breadcrumbs-->
     <div id="content-header">
         <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
-                Notification </a></div>
+                Purchase Order List </a></div>
     </div>
     <!--End-breadcrumbs-->
 
@@ -19,27 +19,38 @@ include "connection.php";
             <div class="span12">
                 <div class="widget-box">
                     <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-                        <h5> Notification </h5>
+                        <h5> Purchase Order List </h5>
                     </div>
                     <div class="widget-content nopadding">
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th> Sender  Id </th>
-                                <th> Subject  </th>
-                                <th> Notification </th>
-
+                                <th> Purchase Id </th>
+                                <th> product Category  </th>
+                                <th> Product Name One  </th>
+                                <th> Product Name Two </th>
+                                <th> Supplier One </th>
+                                <th> supplier Two </th>
+                                <th> Measurement </th>
+                                <th> Quantity </th>
+                                <th> Description</th>
                             </tr>
                             </thead>
                             <tbody>
                             <?php
-                            $res=mysqli_query($link,"select * from notification ");
+                            $res=mysqli_query($link,"select * from  purchase_order ");
                             while ($row=mysqli_fetch_array($res)){
                                 ?>
                                 <tr >
                                     <td><?php echo $row["id"]?></td>
-                                    <td><?php echo $row["subject"]?></td>
-                                    <td><?php echo $row["notific"]?></td>
+                                    <td><?php echo $row["product_category"]?></td>
+                                    <td><?php echo $row["product_name_one"]?></td>
+                                    <td><?php echo $row["product_name_two"]?></td>
+                                    <td><?php echo $row["supplier_one"]?></td>
+                                    <td><?php echo $row["supplier_two"]?></td>
+                                    <td><?php echo $row["measurement"]?></td>
+                                    <td><?php echo $row["quantity"]?></td>
+                                    <td ><?php echo $row["description"]?></td>
                                 </tr>
                                 <?php
                             }

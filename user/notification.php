@@ -18,21 +18,32 @@ include "connection.php";
             <div class="container">
                 <form method="post" id="comment_form">
 
-                    <div class="form-group">
-                        <label>Enter Subject</label>
-                        <input type="text" name="subject" id="subject" class="form-control" >
+                    <div class="control-group">
+                        <label class="control-label"> Subject :</label>
+                        <div class="controls">
+                            <input type="text" class="span11" placeholder="Subject " name="subject"  required/>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Enter Comment</label>
-                        <textarea name="comment" id="comment" class="form-control" rows="6" cols="50"></textarea>
+                    <div class="control-group">
+                        <label class="control-label"> Notification </label>
+                        <div class="controls">
+                            <input type="text"  class="span11" placeholder=" description  " name="notification" required />
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="submit" name="post" id="post" class="btn btn-info"  />
+                    <div class="alert alert-danger" id="error" style="display:none" >
+                        <center>
+                          Notification Not Sent Pleas Try Another! .
+                        </center>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" name="submit1" class="btn btn-success" > Send </button>
                     </div>
                     <div class="alert alert-success" id="success" style="display:none" >
                         <center>
-                            Reccord Inserted Succesfully!
+                            Notification  Sent Successfully!
                         </center>
+                    </div>
                     </div>
                 </form>
             </div>
@@ -42,11 +53,12 @@ include "connection.php";
 </div>
 
 <?php
-if(isset($_POST["post"]))
+if(isset($_POST["submit1"]))
 {
-        $res =mysqli_query($link,"insert into notification values (NULL,'$_POST[subject]','$_POST[comment]')");
+        $res =mysqli_query($link,"insert into notification values (NULL,'$_POST[subject]','$_POST[notification]')");
         ?>
          <script type="text/javascript">
+             document.getElementById("error").style.display="none";
              document.getElementById("success").style.display="block";
             setTimeout(function () {
                 window.location.href=window.location.href;

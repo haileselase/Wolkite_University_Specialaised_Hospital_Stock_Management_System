@@ -24,22 +24,53 @@ include "connection.php";
             <div class="span12">
                 <div class="widget-box">
                     <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-                        <h5> Requaste Stock </h5>
+                        <h5> Request Stock </h5>
                     </div>
                     <div class="widget-content nopadding">
                         <form name="form1" action="" method="post" class="form-horizontal">
+                            <label class="control-label">Product Category </label>
+                            <div class="controls">
+                                <select name="product_category" class="span11" >
+                                    <?php
+                                    $res =mysqli_query($link,"select * from add_catagory_type ");
+                                    while ($row=mysqli_fetch_array($res)){
+
+                                        echo "<option >";
+                                        echo $row['category_name'];
+                                        echo "</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">  Supplier  </label>
+                                <div class="controls">
+                                    <select name="supplier" class="span11">
+                                        <?php
+                                        $res =mysqli_query($link,"select * from  add_suplier_type ");
+                                        while ($row=mysqli_fetch_array($res)){
+
+                                            echo "<option >";
+                                            echo $row['supplier_name'];
+                                            echo "</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
                             <div class="control-group">
                                 <label class="control-label">Product Name :</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder="Product Name " name="product_name" />
-                                </div>
-                            </div>
-                            <div class="control-group">
-                                <label class="control-label">Product Catgorye </label>
-                                <div class="controls">
-                                    <select name="product_catagory" class="span11">
-                                        <option >tablet</option>
-                                        <option >shrop</option>
+                                    <select name="product_name" class="span11">
+                                        <?php
+                                        $res =mysqli_query($link,"select * from add_product_type ");
+                                        while ($row=mysqli_fetch_array($res)){
+
+                                            echo "<option >";
+                                            echo $row['product_name'];
+                                            echo "</option>";
+                                        }
+                                        ?>
+
                                     </select>
                                 </div>
                             </div>
@@ -52,7 +83,7 @@ include "connection.php";
                             <div class="control-group">
                                 <label class="control-label"> Date  :</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder=" Request Date " name="date" />
+                                    <input type="datetime-local" class="span11" placeholder=" Request Date " name="date" value="datetime-local" disabled/>
                                 </div>
                             </div>
 
@@ -111,7 +142,7 @@ include "connection.php";
                 <?php
                 }else
                 {
-                $res =mysqli_query($link,"insert into requast_master values (NULL,'$_POST[request_id]','$_POST[product_name]','$_POST[product_catagory]','$_POST[quantity]','$_POST[date]','$_POST[priority]','$_POST[discription]')");
+                $res =mysqli_query($link,"insert into requast_master values (NULL,'$_POST[request_id]','$_POST[product_name]','$_POST[product_category]','$_POST[supplier]','$_POST[quantity]','$_POST[date]','$_POST[priority]','$_POST[discription]')");
                 ?>
                     <script type="text/javascript">
                         document.getElementById("error").style.display="none";

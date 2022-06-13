@@ -1,6 +1,7 @@
 <?php
 session_start();
 include "connection.php";
+"../user/header.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +74,7 @@ if(isset($_POST["submit1"]))
                     header("Location:../admin/add_new_user.php");
                     break;
                 case "Pharmacy_head":
-                    header("Location:dashboard.php");
+                    header("Location:add_stock.php");
                     break;
                 case "Dispensing_Unit":
                     header("Location:request_stock.php");

@@ -73,8 +73,13 @@ while ($row=mysqli_fetch_array($res))
                                 <label class="control-label">Select Role</label>
                                 <div class="controls">
                                     <select name="role" class="span11">
-                                        <option <?php if($role=="active"){echo "Selected";} ?>>user</option>
-                                        <option <?php if($role=="active" ){echo "Selected";} ?>>admin</option>
+                                        <option <?php if($role=="Administrator"){echo "Selected";} ?>>Administrator</option>
+                                        <option <?php if($role=="Pharmacy_head" ){echo "Selected";} ?>>Pharmacy_head</option>
+                                        <option <?php if($role=="Store_Keeper"){echo "Selected";} ?>>Store_Keeper</option>
+                                        <option <?php if($role=="Auditor" ){echo "Selected";} ?>>Auditor</option>
+                                        <option <?php if($role=="Dispensing_Unit" ){echo "Selected";} ?>>Dispensing_Unit</option>
+                                        <option <?php if($role=="Physician" ){echo "Selected";} ?>>Physician</option>
+                                        <option <?php if($role=="CEO" ){echo "Selected";} ?>>CED</option>
                                     </select>
                                 </div>
                             </div>
@@ -82,7 +87,7 @@ while ($row=mysqli_fetch_array($res))
                                 <label class="control-label">Select Status</label>
                                 <div class="controls">
                                     <select name="status" class="span11">
-                                        <option <?php if($status=="active"){echo "Selected" ;} ?>>active</option>
+                                        <option <?php if($status=="Active"){echo "Selected" ;} ?>>Active</option>
                                         <option <?php if($status=="inactive"){echo "Selected" ;} ?>>inactive</option>
                                     </select>
                                 </div>
@@ -93,7 +98,6 @@ while ($row=mysqli_fetch_array($res))
                                     Reccord Updatated Succesfully!
                                 </center>
                             </div>
-
                         </form>
                     </div>
 

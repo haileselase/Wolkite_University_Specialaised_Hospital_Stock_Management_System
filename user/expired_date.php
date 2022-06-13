@@ -32,7 +32,6 @@ include "connection.php";
                             <th> productname</th>
                             <th> Measurmrnt</th>
                             <th> Description</th>
-                            <th> Prescription</th>
                             <th> Manufacturing_date</th>
                             <th> Expire_date</th>
                             <th> Quantity</th>
@@ -46,13 +45,12 @@ include "connection.php";
                         while ($row=mysqli_fetch_array($res)){
                             ?>
                             <tr >
-                                <td><?php echo $row["productid"]?></td>
+                                <td><?php echo $row["id"]?></td>
                                 <td><?php echo $row["catagoryid"]?></td>
                                 <td><?php echo $row["supplierid"]?></td>
                                 <td ><?php echo $row["productname"]?></td>
                                 <td><?php echo $row["measurmrnt"]?></td>
                                 <td><?php echo $row["description"]?></td>
-                                <td><?php echo $row["prescription"]?></td>
                                 <td><?php echo $row["manufacturing_date"]?></td>
                                 <td ><?php echo $row["expire_date"]?></td>
                                 <td><?php echo $row["quantity"]?></td>
@@ -61,13 +59,13 @@ include "connection.php";
                                     $today =strtotime($today);
                                     $exp =strtotime($row["expire_date"]);
                                     if($today>$exp){
-                                        $diff=$today-$exp;
-                                        $x = abs(floor($diff/(60*60*24)));
+                                        $diff=$exp-$today;
+                                        $x = abs(floor($diff/(60*60*24)/365));
                                         echo 'product Expired';
                                         echo  "</br> Days :".$x;
                                     }else {
-                                        $diff=$today-$exp;
-                                        $x = abs(floor($diff/(60*60*24)));
+                                        $diff=$exp-$today;
+                                        $x = abs(floor($diff/(60*60*24)/365));
                                         echo 'product Expired';
                                         echo  "</br> Days :".$x;
                                     }

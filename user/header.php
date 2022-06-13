@@ -56,6 +56,15 @@
                 <li ><a href="add_stock.php"><i class="icon icon-plus"></i>  Add Stock</a></li>
                 <li><a href="search_stock.php"><i class="icon icon-search"></i> Search Stock</a></li>
                 <li><a href="update_stock.php"><i class="icon icon-upload"></i> Update Stock</a></li>
+                <li><a href="product_list.php"><i class="icon icon-upload"></i> Product List</a></li>
+            </ul>
+        </li>
+        <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Manage Product Type </span> <span
+                        class="label label-important">3</span></a>
+            <ul>
+                <li ><a href="add_category_type.php"><i class="icon icon-plus"></i> Add Category Type </a></li>
+                <li><a href="add_product_type.php"><i class="icon icon-plus"></i> Add Product Type </a></li>
+                <li><a href="add_supplier_type.php"><i class="icon icon-plus"></i> Add Supplier Type </a></li>
             </ul>
         </li>
         <li >

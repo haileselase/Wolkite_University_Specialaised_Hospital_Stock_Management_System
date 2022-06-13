@@ -1,28 +1,27 @@
 <?php
-include "header.php";
-include "connection.php";
-$id =$_POST['search'];
-$catagoryid  = "";
+include "../user/header.php";
+include "../user/connection.php";
+$id = $_GET['id'];
+$catagoryid = "";
 $supplierid  = "";
 $productname = "";
 $measurmrnt = "";
 $description = "";
-$prescription = "";
 $manufacturing_date ="";
 $expire_date = "";
 $quantity="";
-$res=mysqli_query($link,"select * from stock_registration where productid =$id ");
+$res=mysqli_query($link,"select * from stock_registration where id =$id ");
+
 while ($row=mysqli_fetch_array($res))
 {
-    $catagoryid=$row["catagoryid"];
-    $supplierid=$row["supplierid"];
-    $productname=$row["productname"];
-    $measurmrnt=$row["measurmrnt"];
-    $description=$row["description"];
-    $prescription=$row["prescription"];
-    $manufacturing_date=$row["manufacturing_date"];
-    $expire_date=$row["expire_date"];
-    $quantity=$row["quantity"];
+  echo $catagoryid=$row["catagoryid"];
+  $supplierid=$row["supplierid"];
+  $productname=$row["productname"];
+  $measurmrnt=$row["measurmrnt"];
+  $description=$row["description"];
+  $manufacturing_date=$row["manufacturing_date"];
+  $expire_date=$row["expire_date"];
+  $quantity=$row["quantity"];
 
 }
 ?>
@@ -44,46 +43,65 @@ while ($row=mysqli_fetch_array($res))
                     <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
                         <h5>  Update Stock    </h5>
                     </div>
-                    <form name="form1" action="" method="post" class="form-horizontal">
-                        <input type="search" name="search" id="id" placeholder="search" >
-
-                    </form>
                     <div class="widget-content nopadding">
                         <form name="form1" action="" method="post" class="form-horizontal">
                             <div class="control-group">
-                                <label class="control-label">Product Name :</label>
-                                <div class="controls">
-                                    <input type="text" class="span11" placeholder="Product Name " name="product_name" value="<?php echo $productname ;?>"/>
-                                </div>
-                            </div>
-                            <div class="control-group">
                                 <label class="control-label"> Product Category </label>
                                 <div class="controls">
-                                    <select name="category_id" class="span11">
-                                        <option <?php if($catagoryid=="active"){echo "Selected";} ?>>tablet</option>
-                                        <option <?php if($catagoryid=="inactive" ){echo "Selected";} ?>>shrop</option>
+                                    <select name="catagoryid" class="span11" id="sell">
+                                        <?php
+                                        $res =mysqli_query($link,"select * from add_catagory_type ");
+                                        while ($row=mysqli_fetch_array($res)){
+
+                                            echo "<option >";
+                                            echo $row['category_name'];
+                                            echo "</option>";
+                                        }
+                                        ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label">Suplier Id </label>
                                 <div class="controls">
-                                    <select name="supplier_id" class="span11">
-                                        <option <?php if($supplierid=="active"){echo "Selected";} ?>>farma</option>
-                                        <option <?php if($supplierid=="inactive" ){echo "Selected";} ?>>salma</option>
+                                    <select name="supplierid" class="span11">
+                                        <?php
+                                        $res =mysqli_query($link,"select * from  add_suplier_type ");
+                                        while ($row=mysqli_fetch_array($res)){
+
+                                            echo "<option >";
+                                            echo $row['supplier_name'];
+                                            echo "</option>";
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Product Name :</label>
+                                <div class="controls">
+                                    <select name="productname" class="span11" ">
+                                    <?php
+                                    $res =mysqli_query($link,"select * from add_product_type ");
+                                    while ($row=mysqli_fetch_array($res)){
+
+                                        echo "<option >";
+                                        echo $row['product_name'];
+                                        echo "</option>";
+                                    }
+                                    ?>
                                     </select>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label"> Measurmrnt </label>
                                 <div class="controls">
-                                    <select name="mass" class="span11">
-                                        <option <?php if($measurmrnt=="active"){echo "Selected";} ?>>mg</option>
-                                        <option <?php if($measurmrnt=="inactive" ){echo "Selected";} ?>>litter</option>
+                                    <select name="measurmrnt" class="span11" >
+                                        <option <?php if($measurmrnt=="milligram"){echo "Selected";} ?> >milligram</option>
+
                                     </select>
                                 </div>
                             </div>
-
                             <div class="control-group">
                                 <label class="control-label"> Description </label>
                                 <div class="controls">
@@ -91,21 +109,15 @@ while ($row=mysqli_fetch_array($res))
                                 </div>
                             </div>
                             <div class="control-group">
-                                <label class="control-label"> Prescription </label>
-                                <div class="controls">
-                                    <input type="text"  class="span11" placeholder=" Description " name="prescription"  value="<?php echo $prescription;?>"/>
-                                </div>
-                            </div>
-                            <div class="control-group">
                                 <label class="control-label"> Manufacturing Date </label>
                                 <div class="controls">
-                                    <input type="text"  class="span11" placeholder=" Description " name="manufacturing_date"  value="<?php echo $manufacturing_date;?>"/>
+                                    <input type="date"  class="span11" placeholder=" Description " name="manufacturing_date"  value="<?php echo $manufacturing_date;?>"/>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label"> Expire_date </label>
                                 <div class="controls">
-                                    <input type="text"  class="span11" placeholder=" Description " name="expire_date"  value="<?php echo $expire_date;?>"/>
+                                    <input type="date"  class="span11" placeholder=" Description " name="expire_date"  value="<?php echo $expire_date;?>"/>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -114,9 +126,13 @@ while ($row=mysqli_fetch_array($res))
                                     <input type="text"  class="span11" placeholder=" Description " name="quantity"  value="<?php echo $quantity;?>"/>
                                 </div>
                             </div>
-
+                            <div class="alert alert-danger" id="error" style="display:none" >
+                                <center>
+                                    Update Not Performed Pleas Try Again! .
+                                </center>
+                            </div>
                             <div class="form-actions">
-                                <button type="submit" name="submit1" class="btn btn-success"  >Update</button>
+                                <button type="submit" name="submit1" class="btn btn-success"  value ="update">Update</button>
                             </div>
                             <div class="alert alert-success" id="success" style="display:none" >
                                 <center>
@@ -137,15 +153,13 @@ while ($row=mysqli_fetch_array($res))
 <?php
 if(isset($_POST["submit1"]))
 {
-    $id =$_POST['submit1'];
-    echo $id;
-    mysqli_query($link,"update stock_registration set catagoryid='$_POST[category_id]',supplierid='$_POST[supplier_id]',productname='$_POST[product_name]',measurmrnt ='$_POST[mass]',description='$_POST[description]',prescription='$_POST[prescription]',manufacturing_date ='$_POST[manufacturing_date]',expire_date='$_POST[expire_date]',quantity='$_POST[quantity]'where productid =$id")or die(mysqli_error($link));
+    mysqli_query($link,"update stock_registration set catagoryid='$_POST[catagoryid]',supplierid='$_POST[supplierid]',productname='$_POST[productname]',measurmrnt ='$_POST[measurmrnt]',description='$_POST[description]',manufacturing_date ='$_POST[manufacturing_date]',expire_date='$_POST[expire_date]',quantity='$_POST[quantity]'where id =$id")or die(mysqli_error($link));
     ?>
     <script type="text/javascript">
         document.getElementById("success").style.display="block";
         setTimeout(function () {
-            window.location.href=window.location.href;
-        },3000);
+            window.location.href="product_list.php";
+        },1000);
     </script>
     <?php
 }
