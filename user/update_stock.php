@@ -1,4 +1,9 @@
 <?php
+session_start();
+if((isset($_SESSION['username']) && $_SESSION['role']==="Pharmacy_head") or(isset($_SESSION['username']) && $_SESSION['role']==="Store_Keeper") )
+{
+?>
+<?php
 include "../user/header.php";
 include "../user/connection.php";
 $id = $_GET['id'];
@@ -29,7 +34,7 @@ while ($row=mysqli_fetch_array($res))
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+        <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
                 Update Stock </a></div>
     </div>
     <!--End-breadcrumbs-->
@@ -49,6 +54,7 @@ while ($row=mysqli_fetch_array($res))
                                 <label class="control-label"> Product Category </label>
                                 <div class="controls">
                                     <select name="catagoryid" class="span11" id="sell">
+                                        <option value="">-- Select Category -- </option>
                                         <?php
                                         $res =mysqli_query($link,"select * from add_catagory_type ");
                                         while ($row=mysqli_fetch_array($res)){
@@ -65,6 +71,7 @@ while ($row=mysqli_fetch_array($res))
                                 <label class="control-label">Suplier Id </label>
                                 <div class="controls">
                                     <select name="supplierid" class="span11">
+                                        <option value="">-- Select Supplier Name -- </option>
                                         <?php
                                         $res =mysqli_query($link,"select * from  add_suplier_type ");
                                         while ($row=mysqli_fetch_array($res)){
@@ -81,6 +88,7 @@ while ($row=mysqli_fetch_array($res))
                                 <label class="control-label">Product Name :</label>
                                 <div class="controls">
                                     <select name="productname" class="span11" ">
+                                    <option value="">-- Select Product Name -- </option>
                                     <?php
                                     $res =mysqli_query($link,"select * from add_product_type ");
                                     while ($row=mysqli_fetch_array($res)){
@@ -97,6 +105,7 @@ while ($row=mysqli_fetch_array($res))
                                 <label class="control-label"> Measurmrnt </label>
                                 <div class="controls">
                                     <select name="measurmrnt" class="span11" >
+                                        <option value="">-- Select Measurement Name -- </option>
                                         <option <?php if($measurmrnt=="milligram"){echo "Selected";} ?> >milligram</option>
 
                                     </select>
@@ -167,4 +176,8 @@ if(isset($_POST["submit1"]))
 <?php
 include "footer.php";
 ?>
-
+<?php  } else
+{
+    header("Location:index.php");
+}
+?>

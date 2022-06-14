@@ -8,7 +8,7 @@ include "connection.php";
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+        <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
                 View Stock Report </a></div>
     </div>
     <!--End-breadcrumbs-->
@@ -44,6 +44,7 @@ include "connection.php";
                         $res=mysqli_query($link,"select * from stock_registration");
                         while ($row=mysqli_fetch_array($res)){
                             ?>
+
                             <tr >
                                 <td><?php echo $row["id"]?></td>
                                 <td><?php echo $row["catagoryid"]?></td>
@@ -54,24 +55,29 @@ include "connection.php";
                                 <td><?php echo $row["manufacturing_date"]?></td>
                                 <td ><?php echo $row["expire_date"]?></td>
                                 <td><?php echo $row["quantity"]?></td>
-                                <td><?php $today = time();
-                                    $exp_date = $row["expire_date"];
-                                    $today =strtotime($today);
-                                    $exp =strtotime($row["expire_date"]);
-                                    if($today>$exp){
-                                        $diff=$exp-$today;
-                                        $x = abs(floor($diff/(60*60*24)/365));
-                                        echo 'product Expired';
-                                        echo  "</br> Days :".$x;
-                                    }else {
-                                        $diff=$exp-$today;
-                                        $x = abs(floor($diff/(60*60*24)/365));
-                                        echo 'product Expired';
-                                        echo  "</br> Days :".$x;
+                                <td><?php
+                                    $d1=strtotime($row["expire_date"]);
+                                    $d2 =ceil(($d1-time())/60/60/24);
+                                    if($d2 < 30 ){
+                                        ?>
+                                        <a href="#" style="color: red"> Product Expired In  </a>
+                                        <?php
+                                        echo  $d2 ;echo  "  Days ";
+                                    }elseif($d2 > 30 and $d2 < 60 )
+                                    {
+                                        ?>
+                                        <a href="#" style="color: yellow"> Product Expired In  </a>
+                                        <?php
+                                        echo  $d2 ;echo  "  Days ";
+                                    }elseif($d2 > 60 )
+                                    {
+                                        ?>
+                                        <a href="#" style="color: green"> Product Expired In  </a>
+                                        <?php
+                                        echo  $d2 ;echo  "  Days ";
                                     }
-                                    ?></td><
+                                    ?></td>
                             </tr>
-
                             <?php
                         }
                         ?>

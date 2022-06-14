@@ -1,13 +1,19 @@
 <?php
+session_start();
+if((isset($_SESSION['username']) && $_SESSION['role']==="Pharmacy_head") or(isset($_SESSION['username']) && $_SESSION['role']==="Store_Keeper") )
+{
+    ?>
+<?php
 include "header.php";
 include "connection.php";
 $id =$_POST['search'];
+
 ?>
 <!--main-container-part-->
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+        <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
                 Search </a></div>
 
     </div>
@@ -15,7 +21,6 @@ $id =$_POST['search'];
     <div>
         <form name="form1" action="" method="post" class="form-inline" >
             <center> <input type="search" name="search" id="id" placeholder=" search " ><span> <button type="submit" name="submit1" class="btn btn-success"  value ="update">Search</button> </span>  </center>
-
 
         </form>
     </div>
@@ -43,7 +48,7 @@ $id =$_POST['search'];
                 <tbody>
                 <?php
                 $res=mysqli_query($link,"select * from stock_registration  where id =$id ");
-                while ($row=mysqli_fetch_array($res,)){
+                while ($row=mysqli_fetch_assoc($res)){
                     ?>
                     <tr >
                         <td><?php echo $row["id"]?></td>
@@ -70,4 +75,8 @@ include "footer.php";
 ?>
 <!--end-main-container-part-->
 
-
+<?php  } else
+{
+    header("Location:index.php");
+}
+?>

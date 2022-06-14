@@ -1,4 +1,8 @@
-
+<?php
+session_start();
+if(isset($_SESSION['username']) && $_SESSION['role']==="Pharmacy_head")
+{
+    ?>
 <?php
     include "../user/header.php";
     include "../user/connection.php";
@@ -25,7 +29,7 @@ while ($row=mysqli_fetch_array($res))
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+        <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
                 Approve Request </a></div>
     </div>
     <!--End-breadcrumbs-->
@@ -45,15 +49,15 @@ while ($row=mysqli_fetch_array($res))
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th> Requester Id </th>
-                                    <th> Product Name </th>
-                                    <th> Category Name</th>
-                                    <th> Amount</th>
-                                    <th> Date</th>
-                                    <th> Priority</th>
-                                    <th> Description</th>
-                                    <th> Approve</th>
-                                    <th> Delete Request</th>
+                                    <th style="border-color: #57a957 "> Requester Id </th>
+                                    <th style="border-color: #57a957 "> Product Name </th>
+                                    <th style="border-color: #57a957 "> Category Name</th>
+                                    <th style="border-color: #57a957 "> Amount</th>
+                                    <th style="border-color: #57a957 "> Date</th>
+                                    <th style="border-color: #57a957 "> Priority</th>
+                                    <th style="border-color: #57a957 "> Description</th>
+                                    <th style="border-color: #57a957 "> Approve</th>
+                                    <th style="border-color: #57a957 "> Delete Request</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -62,7 +66,7 @@ while ($row=mysqli_fetch_array($res))
                                 while ($row=mysqli_fetch_array($res)){
                                 ?>
                                 <tr >
-                                    <td><?php echo $row["request_id"]?></td>
+                                    <td style="border-color: #57a957 "><?php echo $row["request_id"]?></td>
                                     <td><?php echo $row["product_name"]?></td>
                                     <td><?php echo $row["product_category"]?></td>
                                     <td ><?php echo $row["quantity"]?></td>
@@ -100,3 +104,8 @@ if(isset($_POST["delete"])) {
 <?php
 include "../user/footer.php";
 ?>
+ <?php  } else
+        {
+            header("Location:index.php");
+        }
+        ?>

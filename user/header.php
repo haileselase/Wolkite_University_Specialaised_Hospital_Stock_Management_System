@@ -12,6 +12,7 @@
     <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
     <link rel="stylesheet" href="css/jquery.gritter.css"/>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 
@@ -22,8 +23,6 @@
         <a href="dashboard.html" style="color:white; margin-left: 30px; margin-top: 40px">STOCK</a>
     </h2>
 </div>
-
-
 
 <!--top-Header-menu-->
 <div id="user-nav" class="navbar navbar-inverse">
@@ -43,7 +42,9 @@
 
     </ul>
 </div>
+<div id="top-bar">
 
+</div>
 <!--sidebar-menu-->
 <div id="sidebar">
     <ul>
@@ -55,8 +56,8 @@
             <ul>
                 <li ><a href="add_stock.php"><i class="icon icon-plus"></i>  Add Stock</a></li>
                 <li><a href="search_stock.php"><i class="icon icon-search"></i> Search Stock</a></li>
-                <li><a href="update_stock.php"><i class="icon icon-upload"></i> Update Stock</a></li>
                 <li><a href="product_list.php"><i class="icon icon-upload"></i> Product List</a></li>
+
             </ul>
         </li>
         <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span>Manage Product Type </span> <span
@@ -82,7 +83,30 @@
                 <li><a href="expired_date.php"><i class="icon icon-move"></i>Expired Report</a></li>
             </ul>
         </li>
-
+        <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span> Request </span> <span
+                        class="label label-important">3</span></a>
+            <ul>
+                <li><a href="stock_report.php" ><i class="icon icon-umbrella"></i>Approve  Request </a></li>
+                <li><a href="inventory_report.php" ><i class="icon icon-inbox"></i>Delete Request</a></li>
+                <li><a href="view_approved.php"><i class="icon icon-move"></i>View Approved List</a></li>
+            </ul>
+        </li>
+        <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span> purchase </span> <span
+                        class="label label-important">3</span></a>
+            <ul>
+                <li><a href="purchase_order.php" ><i class="icon icon-umbrella"></i> Order Purchase </a></li>
+                <li><a href="purchase_order_list.php" ><i class="icon icon-inbox"></i>View  Purchase Order</a></li>
+                <li><a href="purchase_approved.php"><i class="icon icon-move"></i> Approve Purchase Order </a></li>
+                <li><a href="purchase_approved.php"><i class="icon icon-move"></i> Approve Purchase List </a></li>
+            </ul>
+        </li>
+        <li class="submenu"><a href="#"><i class="icon icon-th-list"></i> <span> prescription </span> <span
+                        class="label label-important">3</span></a>
+            <ul>
+                <li><a href="prescription.php" ><i class="icon icon-umbrella"></i>  prescription Form  </a></li>
+                <li><a href="view_prescription.php" ><i class="icon icon-inbox"></i>View  prescription</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 <!--sidebar-menu-->

@@ -85,6 +85,16 @@ if(isset($_POST["submit1"]))
                 case "Store_Keeper":
                     header("Location:search_stock.php");
                     break;
+                case "Physician":
+                    header("Location:product_list.php");
+                    break;
+                case "CED":
+                    header("Location:dashboard.php");
+                    break;
+                case "Purchaser":
+                    header("Location:purchase_order.php");
+                    break;
+
             }
 
         }else{

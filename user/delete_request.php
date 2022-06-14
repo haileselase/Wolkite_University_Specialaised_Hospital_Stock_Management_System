@@ -1,13 +1,20 @@
 <?php
+session_start();
+if(isset($_SESSION['username']) && $_SESSION['role']==="Pharmacy_head")
+{
+?>
+<?php
 include "../user/header.php";
 include "../user/connection.php";
+$id=$_GET["id"];
+$res=mysqli_query($link,"delete from requast_master where id=$id");
 ?>
 
 <!--main-container-part-->
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+        <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
                 Request Deleted  </a></div>
     </div>
     <!--End-breadcrumbs-->
@@ -54,18 +61,28 @@ include "../user/connection.php";
 <?php
 if(isset($_POST["submit1"]))
 {
-    $id=$_GET["id"];
-    $res =mysqli_query($link,"insert into deleted_response_list values (NULL,'$id'");die(mysqli_error($link));
-    $res=mysqli_query($link,"delete from requast_master where id=$id");
+     echo $id."is Working";
+
+    $res =mysqli_query($link,"insert into deleted_response_list values (NULL,'$_POST[description]'");
+
     ?>
     <script type="text/javascript">
         document.getElementById("error").style.display="none";
         document.getElementById("success").style.display="block";
+        setTimeout(function () {
+            window.location.href="approve_request.php";
+        },3000);
     </script>
     <?php
+}else{
+    echo "Not Working";
 }
 ?>
 <?php
 include "../user/footer.php";
 ?>
-
+<?php  } else
+{
+    header("Location:index.php");
+}
+?>

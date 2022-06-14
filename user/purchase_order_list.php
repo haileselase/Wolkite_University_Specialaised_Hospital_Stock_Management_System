@@ -1,4 +1,9 @@
 <?php
+session_start();
+if(isset($_SESSION['username']) && $_SESSION['role']==="CED")
+{
+?>
+<?php
 include "header.php";
 include "connection.php";
 ?>
@@ -6,7 +11,7 @@ include "connection.php";
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+        <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
                 Purchase Order List </a></div>
     </div>
     <!--End-breadcrumbs-->
@@ -67,4 +72,8 @@ include "connection.php";
 include "footer.php";
 ?>
 <!--end-main-container-part-->
-
+<?php  } else
+{
+    header("Location:index.php");
+}
+?>

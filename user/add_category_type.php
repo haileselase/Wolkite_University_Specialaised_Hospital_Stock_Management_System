@@ -1,4 +1,8 @@
-
+<?php
+session_start();
+if(isset($_SESSION['username']) && $_SESSION['role']==="Pharmacy_head")
+{
+?>
     <?php
     include "../user/header.php";
     include "../user/connection.php";
@@ -7,7 +11,7 @@
     <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+        <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
                 Add New Category Type </a></div>
     </div>
     <!--End-breadcrumbs-->
@@ -95,3 +99,8 @@ $res =mysqli_query($link,"insert into add_catagory_type values (NULL,'$_POST[cat
     <?php
     include "../user/footer.php";
     ?>
+        <?php  } else
+        {
+            header("Location:index.php");
+        }
+        ?>

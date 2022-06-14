@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(isset($_SESSION['username']) && ($_SESSION['role']))
+if(isset($_SESSION['username']) && $_SESSION['role']==="Dispensing_Unit")
 {
 ?>
 <?php
@@ -11,7 +11,7 @@ include "connection.php";
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+        <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
                 Request Stock</a></div>
     </div>
     <!--End-breadcrumbs-->

@@ -1,3 +1,4 @@
+
 <?php
 include "header.php";
 include "connection.php";
@@ -6,8 +7,8 @@ include "connection.php";
 <div id="content">
     <!--breadcrumbs-->
     <div id="content-header">
-        <div id="breadcrumb"><a href="index.html" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
-                Avleible Product List </a></div>
+        <div id="breadcrumb"><a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>
+                Available Product List </a></div>
     </div>
     <!--End-breadcrumbs-->
 
@@ -19,22 +20,22 @@ include "connection.php";
             <div class="span12">
                 <div class="widget-box">
                     <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
-                        <h5>Avleible Product List </h5>
+                        <h5> Available Product List </h5>
                     </div>
                     <div class="widget-content nopadding">
                         <table class="table table-bordered table-striped">
                             <thead>
                             <tr>
-                                <th> Product Id </th>
-                                <th> Category Id </th>
-                                <th> Supplier Id </th>
-                                <th> Product Name</th>
-                                <th> Measurmrnt </th>
-                                <th> Description</th>
-                                <th> Manufacturing Date</th>
-                                <th> Expire Date</th>
-                                <th> Quantity</th>
-                                <th> Update </th>
+                                <th style="border-color: #57a957 "> Product Id </th>
+                                <th style="border-color: #57a957 "> Category Id </th>
+                                <th style="border-color: #57a957 "> Supplier Id </th>
+                                <th style="border-color: #57a957 "> Product Name</th>
+                                <th style="border-color: #57a957 "> Measurmrnt </th>
+                                <th style="border-color: #57a957 "> Description</th>
+                                <th style="border-color: #57a957 "> Manufacturing Date</th>
+                                <th style="border-color: #57a957 "> Expire Date</th>
+                                <th style="border-color: #57a957 "> Quantity</th>
+                                <th style="border-color: #57a957 "> Update </th>
                             </tr>
                             </thead>
                             <tbody>
@@ -43,16 +44,16 @@ include "connection.php";
                             while ($row=mysqli_fetch_array($res)){
                                 ?>
                                 <tr >
-                                    <td><?php echo $row["id"]?></td>
-                                    <td><?php echo $row["catagoryid"]?></td>
-                                    <td><?php echo $row["supplierid"]?></td>
-                                    <td><?php echo $row["productname"]?></td>
-                                    <td ><?php echo $row["measurmrnt"]?></td>
-                                    <td><?php echo $row["description"]?></td>
-                                    <td><?php echo $row["manufacturing_date"]?></td>
-                                    <td ><?php echo $row["expire_date"]?></td>
-                                    <td><?php echo $row["quantity"]?></td>
-                                    <td><a href="update_stock.php?id=<?php echo $row["id"];?>"> Update </a> </td>
+                                    <td style="border-color: #57a957 "><?php echo $row["id"]?></td>
+                                    <td style="border-color: #57a957 "><?php echo $row["catagoryid"]?></td>
+                                    <td style="border-color: #57a957 "><?php echo $row["supplierid"]?></td>
+                                    <td style="border-color: #57a957 "><?php echo $row["productname"]?></td>
+                                    <td style="border-color: #57a957 "><?php echo $row["measurmrnt"]?></td>
+                                    <td style="border-color: #57a957 "><?php echo $row["description"]?></td>
+                                    <td style="border-color: #57a957 "><?php echo $row["manufacturing_date"]?></td>
+                                    <td style="border-color: #57a957 "><?php echo $row["expire_date"]?></td>
+                                    <td style="border-color: #57a957 "><?php echo $row["quantity"]?></td>
+                                    <td style="border-color: #57a957 "><a href="update_stock.php?id=<?php echo $row["id"];?>"> Update </a> </td>
                                 </tr>
                                 <?php
                             }
@@ -69,4 +70,3 @@ include "connection.php";
 include "footer.php";
 ?>
 <!--end-main-container-part-->
-
